@@ -1,3 +1,9 @@
-node_modules/
-/static/img/
-logs/
+.idea
+static/uploadfile
+main.exe
+go-admin
+temp/
+!temp
+vendor
+config/settings.dev.yml
+go-admin
