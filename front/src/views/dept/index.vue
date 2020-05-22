@@ -1,17 +1,17 @@
 <template>
   <div class="app-container">
     <el-form :inline="true">
-      <el-form-item label="班级名称">
+      <el-form-item label="组织名称">
         <el-input
           v-model="queryParams.deptName"
-          placeholder="请输入班级名称"
+          placeholder="请输入组织名称"
           clearable
           size="small"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
       <el-form-item label="状态">
-        <el-select v-model="queryParams.status" placeholder="班级状态" clearable size="small">
+        <el-select v-model="queryParams.status" placeholder="组织状态" clearable size="small">
           <el-option
             v-for="dict in statusOptions"
             :key="dict.dictValue"
@@ -46,7 +46,7 @@
       default-expand-all
       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
     >
-      <el-table-column prop="deptName" label="班级名称" />
+      <el-table-column prop="deptName" label="组织名称" />
       <el-table-column prop="sort" label="排序" width="200" />
       <el-table-column prop="status" label="状态" :formatter="statusFormat" width="100">
         <template slot-scope="scope">
@@ -105,8 +105,8 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="班级名称" prop="deptName">
-              <el-input v-model="form.deptName" placeholder="请输入班级名称" />
+            <el-form-item label="组织名称" prop="deptName">
+              <el-input v-model="form.deptName" placeholder="请输入组织名称" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -130,7 +130,7 @@
             </el-form-item>
           </el-col> -->
           <el-col :span="12">
-            <el-form-item label="班级状态">
+            <el-form-item label="组织状态">
               <el-radio-group v-model="form.status">
                 <el-radio
                   v-for="dict in statusOptions"
@@ -182,10 +182,10 @@ export default {
       // 表单校验
       rules: {
         parent_id: [
-          { required: true, message: '上级班级不能为空', trigger: 'blur' }
+          { required: true, message: '上级组织不能为空', trigger: 'blur' }
         ],
         deptName: [
-          { required: true, message: '班级名称不能为空', trigger: 'blur' }
+          { required: true, message: '组织名称不能为空', trigger: 'blur' }
         ],
         sort: [
           { required: true, message: '菜单顺序不能为空', trigger: 'blur' }
@@ -276,7 +276,7 @@ export default {
         this.form.parent_id = row.deptId
       }
       this.open = true
-      this.title = '添加班级'
+      this.title = '添加组织'
     },
     /** 修改按钮操作 */
     handleUpdate(row) {
@@ -286,7 +286,7 @@ export default {
       getDept(row.deptId).then(response => {
         this.form = response.data
         this.open = true
-        this.title = '修改班级'
+        this.title = '修改组织'
       })
     },
     /** 提交按钮 */

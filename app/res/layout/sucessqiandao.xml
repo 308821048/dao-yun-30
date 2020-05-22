@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:minHeight="30dp"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/imagebtn_qiandao_back"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/button_back_normal" />
+
+        <TextView
+            android:id="@+id/textview_qiandao_title"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="0.18"
+            android:text="签到成功"
+            android:textColor="#FF0000"
+            android:textSize="35sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/textview_qiandao_userName"
+                android:layout_width="340dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/img_icon_login"
+                android:gravity="center_vertical"
+                android:minHeight="30dp"
+                android:paddingLeft="20dp"
+                android:text="姓名："
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/et_register_username"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/textview_qiandao_userName"
+                android:layout_alignRight="@id/textview_qiandao_userName"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:hint="后爽"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textview_qiandao_xuehao"
+                android:layout_width="340dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/textview_qiandao_userName"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/img_icon_login"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="学  号："
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/et_register_xuehao"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/textview_qiandao_xuehao"
+                android:layout_alignRight="@id/textview_qiandao_xuehao"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:hint="160327054"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textview_qiandao_class"
+                android:layout_width="340dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/textview_qiandao_xuehao"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/img_icon_login"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="班级："
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/et_qiandao_pwd"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/textview_qiandao_class"
+                android:layout_alignRight="@id/textview_qiandao_class"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:hint="计算机技术"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textview_qiandao_weizhi"
+                android:layout_width="340dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/textview_qiandao_class"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/img_icon_login"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="位置："
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/et_confirm_pwd"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textview_qiandao_weizhi"
+                android:layout_alignRight="@+id/textview_qiandao_weizhi"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:hint="3排4列"
+                android:inputType="textPassword"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textview_register_phone"
+                android:layout_width="340dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/textview_qiandao_weizhi"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/img_icon_login"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="签到时间："
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/et_qiandao_phone"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/textview_register_phone"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:hint="2017-03-31 14:09"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textview_qiandao_status"
+                android:layout_width="340dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/textview_register_phone"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/img_icon_login"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="签到状态："
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/et_register_status"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textview_qiandao_status"
+                android:layout_alignBottom="@+id/textview_qiandao_status"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:ems="10"
+                android:hint="已经签到"
+                android:textSize="20sp" >
+
+                <requestFocus />
+            </EditText>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

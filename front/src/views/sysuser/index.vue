@@ -6,7 +6,7 @@
         <div class="head-container">
           <el-input
             v-model="deptName"
-            placeholder="请输入班级名称"
+            placeholder="请输入组织名称"
             clearable
             size="small"
             prefix-icon="el-icon-search"
@@ -181,12 +181,12 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="班级" prop="deptId">
+            <el-form-item label="组织" prop="deptId">
               <treeselect
                 v-model="form.deptId"
                 :options="deptOptions"
                 :normalizer="normalizer"
-                placeholder="请选择班级"
+                placeholder="请选择组织"
               />
             </el-form-item>
           </el-col>
@@ -336,7 +336,7 @@ export default {
       deptOptions: undefined,
       // 是否显示弹出层
       open: false,
-      // 班级名称
+      // 组织名称
       deptName: undefined,
       // 默认密码
       initPassword: undefined,
@@ -389,7 +389,7 @@ export default {
           { required: true, message: '用户昵称不能为空', trigger: 'blur' }
         ],
         deptId: [
-          { required: true, message: '班级不能为空', trigger: 'blur' }
+          { required: true, message: '组织不能为空', trigger: 'blur' }
         ],
         password: [
           { required: true, message: '用户密码不能为空', trigger: 'blur' }
