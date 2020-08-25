@@ -1,85 +1,82 @@
-import Vue from 'vue'
+import Vue from 'vue';
+import App from './App';
+import router from './router';
+import axios from 'axios';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';    // 默认主题
+import "babel-polyfill";
+//use v-charts
+import VeLine from 'v-charts/lib/line';
+import VeMap from 'v-charts/lib/map';
+import VeHistogram from 'v-charts/lib/histogram';
+import VueResource from 'vue-resource'
+import Vuex from 'vuex'
+import store from './vuex/store'
+import VueRouter from 'vue-router';
 
-import Cookies from 'js-cookie'
+Vue.use(VueRouter);
+Vue.use(Vuex)
+Vue.use(VueResource)
+Vue.component(VeLine.name, VeLine);
+Vue.component(VeMap.name,VeMap)
+Vue.component(VeHistogram.name,VeHistogram)
+// charts end
+Vue.use(ElementUI, { size: 'small' });
+Vue.prototype.$axios = axios;
 
-import 'normalize.css/normalize.css' // a modern alternative to CSS resets
+//使用钩子函数对路由进行权限跳转
+// router.beforeEach((to, from, next) => {
+//     const role = localStorage.getItem('ms_username');
+//     if(!role && to.path !== '/login'){
+//         next('/login');
+//     }else if(to.meta.permission){
+//         // 如果是管理员权限则可进入，这里只是简单的模拟管理员权限而已
+//         role === 'admin' ? next() : next('/403');
+//     }else{
+//         // 简单的判断IE10及以下不进入富文本编辑器，该组件不兼容
+//         if(navigator.userAgent.indexOf('MSIE') > -1 && to.path === '/editor'){
+//             Vue.prototype.$alert('vue-quill-editor组件不兼容IE10及以下浏览器，请使用更高版本的浏览器查看', '浏览器不兼容通知', {
+//                 confirmButtonText: '确定'
+//             });
+//         }else{
+//             next();
+//         }
+//     }
+// })
+// 全局导航钩子
+router.beforeEach((to, from, next) => {
 
-import Element from 'element-ui'
-import './styles/element-variables.scss'
+    if (to.meta.requireAuth) {
 
-import '@/styles/index.scss' // global css
-import '@/styles/admin.scss'
-
-import App from './App'
-import store from './store'
-import router from './router'
-import permission from './directive/permission'
-
-import { getDicts } from '@/api/system/dict/data'
-import { getConfigKey } from '@/api/system/config'
-import { parseTime, resetForm, addDateRange, selectDictLabel, download } from '@/utils/costum'
-
-import './icons' // icon
-import './permission' // permission control
-import './utils/error-log' // error log
-
-import * as filters from './filters' // global filters
-
-import Pagination from '@/components/Pagination'
-
-// 全局方法挂载
-Vue.prototype.getDicts = getDicts
-Vue.prototype.getConfigKey = getConfigKey
-Vue.prototype.parseTime = parseTime
-Vue.prototype.resetForm = resetForm
-Vue.prototype.addDateRange = addDateRange
-Vue.prototype.selectDictLabel = selectDictLabel
-Vue.prototype.download = download
-
-/**
- * If you don't want to use mock-server
- * you want to use MockJs for mock api
- * you can execute: mockXHR()
- *
- * Currently MockJs will be used in the production environment,
- * please remove it before going online! ! !
- */
-import { mockXHR } from '../mock'
-if (process.env.NODE_ENV === 'production') {
-  mockXHR()
-}
-
-// 全局组件挂载
-Vue.component('Pagination', Pagination)
-
-Vue.prototype.msgSuccess = function(msg) {
-  this.$message({ showClose: true, message: msg, type: 'success' })
-}
-
-Vue.prototype.msgError = function(msg) {
-  this.$message({ showClose: true, message: msg, type: 'error' })
-}
-
-Vue.prototype.msgInfo = function(msg) {
-  this.$message.info(msg)
-}
-
-Vue.use(permission)
-
-Vue.use(Element, {
-  size: Cookies.get('size') || 'medium' // set element-ui default size
+        // console.log(isEmptyObject(store.state.user))
+        if(!isEmptyObject(store.state.user)) {
+            next();
+        }
+        else {
+            next({
+                path: '/login',
+                query: {redirect: to.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
+            })
+        }
+    }
+    else {
+        next();
+    }
 })
+//判断object是否为空
+function isEmptyObject(obj) {
+    for (let key in obj) {
+        return false;
+    }
+    return true;
+}
 
-// register global utility filters
-Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key])
-})
 
-Vue.config.productionTip = false
+
+
 
 new Vue({
-  el: '#app',
-  router,
-  store,
-  render: h => h(App)
-})
+    router,
+    store,
+    render: h => h(App)
+}).$mount('#app');
